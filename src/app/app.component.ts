@@ -8,15 +8,8 @@ import { HttpClient } from '@angular/common/http'
 })
 export class AppComponent {
 
-  constructor(private http: HttpClient){
+  constructor(){
 
   }
-
-  result:string
-  sendEmail(){
-    this.http.get('https://us-central1-be-api-3f648.cloudfunctions.net/sendMail/send').subscribe(res=>{
-      console.log(res)
-      this.result = JSON.stringify(res)
-    });
-  }
+  
 }
