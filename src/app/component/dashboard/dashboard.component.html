@@ -1,3 +1,5 @@
-<button (click)="sendEmail()">Send mail</button>
-
-{{result}}
+<div class="block-container">
+    <app-task style="width:100%"></app-task>
+    <button class="button" (click)="sentMail()">Send mail</button>
+    <app-result *ngIf="result!=''" result='{{result}}' ></app-result>
+</div>

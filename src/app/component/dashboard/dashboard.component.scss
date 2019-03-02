@@ -1,0 +1,80 @@
+$dark-blue: #222;
+$green: grey;
+$action-color: $green;
+
+.block-container {
+    font-family: 'Montserrat', sans-serif;
+    width: 80%;
+    margin: 40px auto;
+    background: #fff;
+    padding: 15px;
+  }
+  .button {
+    -webkit-font-smoothing: antialiased;
+    background-color: $dark-blue;
+    margin-bottom: 10px;
+    border: none;
+    color: #fff;
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 100;
+    text-decoration: none;
+    user-select: none;
+    letter-spacing: 1px;
+    color: white;
+    padding: 20px 40px;
+    text-transform: uppercase;
+    transition: all 0.1s ease-out;
+  
+    &:hover {
+      background-color: $action-color;
+      color: #fff;
+    }
+    
+    &:active {
+      transform: scale(0.95);
+    }
+  
+    &--bubble {
+      position: relative;
+      z-index: 2;
+      color: white;
+      background: none;
+  
+      &:hover {
+        background: none;
+      }
+  
+      &:hover + .button--bubble__effect-container .circle {
+        background: darken($action-color, 15%);
+      }
+  
+      &:hover + .button--bubble__effect-container .button {
+        background: darken($action-color, 15%);
+      }
+  
+      &:active + .button--bubble__effect-container {
+        transform: scale(0.95);
+      }
+  
+      &__container {
+        position: relative;
+        display: inline-block;
+  
+        .effect-button {
+          position: absolute;
+          width: 50%;
+          height: 25%;
+          top: 50%;
+          left: 25%;
+          z-index: 1;
+          transform: translateY(-50%);
+          background: $dark-blue;
+          transition: background 0.1s ease-out;
+        }
+      }
+    }
+  }
+  
+  

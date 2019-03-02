@@ -1,0 +1,83 @@
+<div class="example-container">
+  <h2>Task List</h2>
+
+  <div
+    cdkDropList
+    #taskList="cdkDropList"
+    [cdkDropListData]="task"
+    [cdkDropListConnectedTo]="[yesterdayList,todayList,tomorrowList]"
+    class="example-list"
+    (cdkDropListDropped)="drop($event)">
+    <div class="example-box"  style="text-align:center" *ngFor="let item of task" cdkDrag>
+      <div>
+          {{item.desc}}
+      </div>
+      <div>
+        <mat-slider min="1" max="100" step="25" [(ngModel)]="item.value" (input)="item.value = $event.value"></mat-slider>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="example-container">
+  <h2>Last Day</h2>
+
+  <div
+    cdkDropList
+    #yesterdayList="cdkDropList"
+    [cdkDropListData]="yesterday"
+    [cdkDropListConnectedTo]="[taskList]"
+    class="example-list"
+    (cdkDropListDropped)="drop($event)">
+    <div class="example-box" style="text-align:center" *ngFor="let item of yesterday" cdkDrag>
+        <div>
+            {{item.desc}}
+        </div>
+        <div>
+            <mat-slider min="1" max="100" step="25" [(ngModel)]="item.value" (input)="item.value = $event.value"></mat-slider>
+          </div>
+    </div>
+  </div>
+</div>
+
+<div class="example-container">
+  <h2>Today</h2>
+
+  <div
+    cdkDropList
+    #todayList="cdkDropList"
+    [cdkDropListData]="today"
+    [cdkDropListConnectedTo]="[taskList]"
+    class="example-list"
+    (cdkDropListDropped)="drop($event)">
+    <div class="example-box" style="text-align:center" *ngFor="let item of today" cdkDrag>
+        <div>
+            {{item.desc}}
+        </div>
+        <div>
+            <mat-slider min="1" max="100" step="25" [(ngModel)]="item.value" (input)="item.value = $event.value"></mat-slider>
+          </div>
+    </div>
+  </div>
+</div>
+<div class="example-container">
+  <h2>Next Day</h2>
+
+  <div
+    cdkDropList
+    #tomorrowList="cdkDropList"
+    [cdkDropListData]="tomorrow"
+    [cdkDropListConnectedTo]="[taskList]"
+    class="example-list"
+    (cdkDropListDropped)="drop($event)">
+    <div class="example-box" style="text-align:center" *ngFor="let item of tomorrow" cdkDrag>
+        <div>
+            {{item.desc}}
+        </div>
+        <div>
+            <mat-slider min="1" max="100" step="25" [(ngModel)]="item.value" (input)="item.value = $event.value"></mat-slider>
+          </div>
+    </div>
+  </div>
+</div>
+

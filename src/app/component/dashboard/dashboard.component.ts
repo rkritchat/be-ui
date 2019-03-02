@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { SendemailService } from 'src/app/service/sendemail.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,9 +9,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DashboardComponent implements OnInit {
 
-  result:String
-
-  constructor(private http: HttpClient){
+  result:String = ''
+  constructor(private sendmailService: SendemailService){
 
   }
 
@@ -18,11 +18,23 @@ export class DashboardComponent implements OnInit {
     
   }
 
-  sendEmail(){
-    this.http.get('https://us-central1-be-api-3f648.cloudfunctions.net/sendMail/send').subscribe(res=>{
-      console.log(res)
-      this.result = JSON.stringify(res)
-    });
-  }
+  sentMail() {
+    this.sendmailService.sendemail()
+      .then((result: any) => {
+        let data = result
 
+        if ("0000" == data.statusCode) {
+          this.result = data.statusDesc
+        }
+        else{
+          this.result = ''
+        }
+
+      })
+      .catch(err => {
+        this.result = 'Failed'
+        throw err
+      });
+     
+  }
 }
