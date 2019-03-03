@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import { Global } from '../../class/global';
 
 
 @Component({
@@ -9,9 +10,10 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
 })
 export class TaskComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private global:Global) { }
+  val: any
   ngOnInit() {
+
   }
   task = [
     { 'desc':'Get to work','value':"25",id:1},
@@ -30,6 +32,10 @@ export class TaskComponent implements OnInit {
    
   ];
 
+  log(){
+    this.global.setData(this.yesterday)
+  }
+
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
@@ -39,5 +45,9 @@ export class TaskComponent implements OnInit {
                         event.previousIndex,
                         event.currentIndex);
     }
+  }
+
+  onTyping(evnt){
+    console.log(this.yesterday)
   }
 }

@@ -13,6 +13,10 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { ResultComponent } from './shared/component/result/result.component';
 import { SendemailService } from './service/sendemail.service';
+import { AddTaskComponent } from './component/add-task/add-task.component';
+import { Global } from './shared/class/global';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,9 +25,12 @@ import { SendemailService } from './service/sendemail.service';
     TaskComponent,
     ProgressbarComponent,
     ResultComponent,
+    AddTaskComponent,
   ],
   imports: [
     BrowserModule,
+    CommonModule,
+    FormsModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
@@ -31,7 +38,7 @@ import { SendemailService } from './service/sendemail.service';
     MatSliderModule,
     MatExpansionModule
   ],
-  providers: [SendemailService],
+  providers: [SendemailService,Global],
   bootstrap: [AppComponent],
   schemas:[NO_ERRORS_SCHEMA]
 })

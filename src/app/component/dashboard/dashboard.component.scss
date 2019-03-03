@@ -76,5 +76,16 @@ $action-color: $green;
       }
     }
   }
-  
-  
+  .container {
+    padding-top: 75px;
+  }
+
+  h1{
+    font-weight: 100;
+  }
+  .separator {
+    margin: 15px auto;
+    width: 50%;
+    height: 1px;
+    border-bottom: 1px dashed #abafba;
+  }

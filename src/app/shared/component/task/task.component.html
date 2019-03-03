@@ -1,5 +1,5 @@
-<div class="example-container">
-  <h2>Task List</h2>
+<div class="col-md-3">
+  <h4 class="text-center">Task List</h4>
 
   <div
     cdkDropList
@@ -12,15 +12,15 @@
       <div>
           {{item.desc}}
       </div>
-      <div>
+      <!-- <div>
         <mat-slider min="1" max="100" step="25" [(ngModel)]="item.value" (input)="item.value = $event.value"></mat-slider>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>
 
-<div class="example-container">
-  <h2>Last Day</h2>
+<div class="col-md-3">
+  <h4 class="text-center">Last Day</h4>
 
   <div
     cdkDropList
@@ -33,15 +33,17 @@
         <div>
             {{item.desc}}
         </div>
-        <div>
-            <mat-slider min="1" max="100" step="25" [(ngModel)]="item.value" (input)="item.value = $event.value"></mat-slider>
-          </div>
+        <div >
+         
+          <input type="text" style="margin-top:10px;text-align:center" (keypress)="onTyping($event)"  class="form-control" [(ngModel)]="item.value" placeholder="Progress"/>
+          <!-- <mat-slider min="1" max="100" step="25" [(ngModel)]="item.value" (input)="item.value = $event.value"></mat-slider> -->
+        </div>
     </div>
   </div>
 </div>
 
-<div class="example-container">
-  <h2>Today</h2>
+<div class="col-md-3">
+  <h4 class="text-center">Today</h4>
 
   <div
     cdkDropList
@@ -55,13 +57,14 @@
             {{item.desc}}
         </div>
         <div>
-            <mat-slider min="1" max="100" step="25" [(ngModel)]="item.value" (input)="item.value = $event.value"></mat-slider>
-          </div>
+            <input type="text" style="margin-top:10px;text-align:center" class="form-control" [(ngModel)]="item.value" placeholder="Progress"/>
+            <!-- <mat-slider min="1" max="100" step="25" [(ngModel)]="item.value" (input)="item.value = $event.value"></mat-slider> -->
+        </div>
     </div>
   </div>
 </div>
-<div class="example-container">
-  <h2>Next Day</h2>
+<div class="col-md-3">
+  <h4 class="text-center">Next Day</h4>
 
   <div
     cdkDropList
@@ -75,7 +78,8 @@
             {{item.desc}}
         </div>
         <div>
-            <mat-slider min="1" max="100" step="25" [(ngModel)]="item.value" (input)="item.value = $event.value"></mat-slider>
+            <input type="text" style="margin-top:10px;text-align:center"  class="form-control" [(ngModel)]="item.value" placeholder="Progress"/>
+            <!-- <mat-slider min="1" max="100" step="25" [(ngModel)]="item.value" (input)="item.value = $event.value"></mat-slider> -->
           </div>
     </div>
   </div>

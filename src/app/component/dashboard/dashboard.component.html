@@ -1,5 +1,18 @@
-<div class="block-container">
-    <app-task style="width:100%"></app-task>
-    <button class="button" (click)="sentMail()">Send mail</button>
-    <app-result *ngIf="result!=''" result='{{result}}' ></app-result>
+<div class="container">
+    <h1 class="text-center">TASK</h1>
+    <div class="separator"></div>
+    <div class="row col-md-10 col-md-offset-1">
+        <app-task style="width:100%"></app-task>
+       
+    </div>
+    <div class="row col-md-10 col-md-offset-1">
+        <div class="col-md-3" style="margin-top: 1rem;">
+                <button class="button" (click)="sentMail()">Send mail</button>
+        </div>
+        <div class="col-md-12">
+                <app-result *ngIf="result!=''" result='{{result}}' ></app-result>
+        </div>
+        
+    </div>
+    
 </div>
