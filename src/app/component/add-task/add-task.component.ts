@@ -9,14 +9,15 @@ import { TaskService } from 'src/app/service/taskService/task.service';
 export class AddTaskComponent implements OnInit {
   @ViewChild('dialog') dialog;
 
-  constructor(private taskService:TaskService) { }
+  constructor(private taskService: TaskService) { }
   task = {
-    taskLabel : "",
-    user : "tichaws",
-    taskDesc : "",
-    taskProgress : "",
+    taskLabel: "",
+    user: "tichaws",
+    taskDesc: "",
+    taskProgress: "",
   }
   ngOnInit() {
+    this.clear()
   }
 
   addTask() {
@@ -24,16 +25,28 @@ export class AddTaskComponent implements OnInit {
       .then((result: any) => {
         let data = result
         if ("0000" == data.statusCode) {
+          this.clear()
           this.dialog.openDialog(data)
         }
-        else{
-          
+        else {
+
         }
 
       })
       .catch(err => {
         throw err
       });
-     
+
+  }
+
+
+  clear() {
+    this.task = {
+      taskLabel : "",
+      user : localStorage.getItem('username'),
+      taskDesc : "",
+      taskProgress : "",
+    }
   }
 }
+

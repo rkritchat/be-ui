@@ -15,7 +15,7 @@ export class UserService {
         lastname:  userInfo.lastname,
         user:  userInfo.user,
         pwd:  userInfo.pwd,
-        tell:  userInfo.tell,
+        tell:  userInfo.tel,
         email:  userInfo.email,
       }
     )).toPromise();

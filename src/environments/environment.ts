@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api_url:'https://us-central1-be-api-ts.cloudfunctions.net/helloWorld/'
+  api_url:'https://us-central1-be-api-ts.cloudfunctions.net/helloWorld'
 };
 
 /*

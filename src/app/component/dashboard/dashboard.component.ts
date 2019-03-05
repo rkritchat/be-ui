@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SendemailService } from 'src/app/service/sendmailService/sendemail.service';
+import { Global } from 'src/app/shared/class/global';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,7 +11,7 @@ import { SendemailService } from 'src/app/service/sendmailService/sendemail.serv
 export class DashboardComponent implements OnInit {
 
   result:String = ''
-  constructor(private sendmailService: SendemailService){
+  constructor(private sendmailService: SendemailService,private global:Global){
 
   }
 
@@ -19,7 +20,7 @@ export class DashboardComponent implements OnInit {
   }
 
   sentMail() {
-    this.sendmailService.sendemail()
+    this.sendmailService.sendemail(this.global.getSendMailparam())
       .then((result: any) => {
         let data = result
 

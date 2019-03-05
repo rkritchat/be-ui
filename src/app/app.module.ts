@@ -16,11 +16,15 @@ import { SendemailService } from './service/sendmailService/sendemail.service';
 import { AddTaskComponent } from './component/add-task/add-task.component';
 import { Global } from './shared/class/global';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AlertComponent, DialogContentExampleDialog } from './shared/component/alert/alert.component';
 import { MatButtonModule } from '@angular/material';
 import { Intorceptor } from './intorceptor/intorceptor';
+import { LoginComponent } from './component/login/login.component';
+import { RegisterComponent } from './component/register/register.component';
+import { HeaderComponent } from './component/header/header.component';
+import { SettingComponent } from './component/setting/setting.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +35,11 @@ import { Intorceptor } from './intorceptor/intorceptor';
     ResultComponent,
     AddTaskComponent,
     AlertComponent,
-    DialogContentExampleDialog
+    DialogContentExampleDialog,
+    LoginComponent,
+    RegisterComponent,
+    HeaderComponent,
+    SettingComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +52,8 @@ import { Intorceptor } from './intorceptor/intorceptor';
     MatSliderModule,
     MatExpansionModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    ReactiveFormsModule
   ],
   entryComponents:[DialogContentExampleDialog],
   providers: [

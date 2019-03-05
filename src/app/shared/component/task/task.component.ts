@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import { Global } from '../../class/global';
 import { TaskService } from 'src/app/service/taskService/task.service';
+import { TouchSequence } from 'selenium-webdriver';
 
 
 @Component({
@@ -14,25 +15,25 @@ export class TaskComponent implements OnInit {
   constructor(private global:Global,private taskService:TaskService) { }
   val: any
   ngOnInit() {
-
+    this.getTaskList() 
   }
   task = [
-    { taskDesc:'Get to work',
-      taskProgress:"25",
-      taskId:1
-    },
-    { taskDesc:'Pick up groceries',
-      taskProgress:"25",
-      taskId:2
-    },
-    { taskDesc:'Go home',
-      taskProgress:"25",
-      taskId:3
-    },
-    { taskDesc:'Fall asleep',
-      taskProgress:"25",
-      taskId:4
-    }
+    // { taskDesc:'Get to work',
+    //   taskProgress:"25",
+    //   taskId:1
+    // },
+    // { taskDesc:'Pick up groceries',
+    //   taskProgress:"25",
+    //   taskId:2
+    // },
+    // { taskDesc:'Go home',
+    //   taskProgress:"25",
+    //   taskId:3
+    // },
+    // { taskDesc:'Fall asleep',
+    //   taskProgress:"25",
+    //   taskId:4
+    // }
   ];
 
   yesterday = [
@@ -58,6 +59,12 @@ export class TaskComponent implements OnInit {
                         event.previousIndex,
                         event.currentIndex);
     }
+    let param ={
+      today:this.today,
+      lastDay:this.yesterday,
+      nextDay:this.tomorrow
+    }
+    this.global.setSendMailparam(param)
   }
 
   onTyping(evnt){
@@ -65,7 +72,7 @@ export class TaskComponent implements OnInit {
   }
 
   getTaskList() {
-    this.taskService.getTaskListByUser("kritchat")
+    this.taskService.getTaskListByUser(localStorage.getItem('username'))
       .then((result: any) => {
         let data = result
 
@@ -82,5 +89,9 @@ export class TaskComponent implements OnInit {
         throw err
       });
      
+  }
+
+  sentMail(){
+
   }
 }

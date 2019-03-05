@@ -1,0 +1,43 @@
+<div class="register">
+  <div class="register-screen">
+    <div class="app-title">
+      <h1>Register</h1>
+    </div>
+
+    <div class="register-form">
+      <div class="control-group">
+        <input type="text" class="register-field" [(ngModel)]="regisForm.firstname" value="" placeholder="firstname" id="register-name">
+        <label class="register-field-icon fui-user" for="register-firstname"></label>
+      </div>
+
+      <div class="control-group">
+        <input type="text" class="register-field"  [(ngModel)]="regisForm.lastname" value="" placeholder="lastname" id="register-lastname">
+        <label class="register-field-icon fui-lock" for="register-lastname"></label>
+      </div>
+
+      <div class="control-group">
+        <input type="text" class="register-field" [(ngModel)]="regisForm.user" value="" placeholder="username" id="register-username">
+        <label class="register-field-icon fui-user" for="register-username"></label>
+      </div>
+
+      <div class="control-group">
+        <input type="password" class="register-field" [(ngModel)]="regisForm.pwd" value="" placeholder="password" id="register-password">
+        <label class="register-field-icon fui-user" for="register-password"></label>
+      </div>
+
+      <div class="control-group">
+        <input type="text" class="register-field" [(ngModel)]="regisForm.tel"  value="" placeholder="tel" id="register-tel">
+        <label class="register-field-icon fui-user" for="register-tel"></label>
+      </div>
+
+      <div class="control-group">
+        <input type="email" class="register-field" [(ngModel)]="regisForm.email"  value="" placeholder="email" id="register-email">
+        <label class="register-field-icon fui-user" for="register-email"></label>
+      </div>
+
+      <a class="btn btn-primary btn-large btn-block" (click)="register()">register</a>
+      <a class="register-link" [routerLink]="['/']" href="#">Have a account?</a>
+    </div>
+  </div>
+</div>
+<app-alert #regisAlert></app-alert>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http' 
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,7 @@ import { HttpClient } from '@angular/common/http'
 })
 export class AppComponent {
 
-  constructor(){
+  constructor(private router:Router){
 
   }
   

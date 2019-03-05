@@ -3,16 +3,7 @@ import {MatDialog, MAT_DIALOG_DATA} from '@angular/material';
 
 
 export interface DialogData {
-  statusCode: "",
   statusDesc: "",
-  taskRes: {
-    taskId: 0,
-    taskLabel: "",
-    user: "",
-    taskDesc: "",
-    taskProgress: "",
-    taskStatus: ""
-  }
 }
 
 @Component({
@@ -28,14 +19,6 @@ export class AlertComponent {
     const dialogRef = this.dialog.open(DialogContentExampleDialog, {
       data: {
         statusDesc:task.statusDesc,
-        taskRes:{
-          taskId: task.taskId,
-          taskLabel: task.taskLabel,
-          user:  task.user,
-          taskDesc: task.taskDesc,
-          taskProgress: task.taskProgress,
-          taskStatus: task.taskStatus,
-        }
       }
     });
     dialogRef.afterClosed().subscribe(result => {

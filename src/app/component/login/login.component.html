@@ -1,0 +1,31 @@
+<div class="login">
+  <div class="login-screen">
+    <div class="app-title">
+      <h1>Login</h1>
+    </div>
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <div class="login-form">
+        <div class="control-group form-group">
+          <input type="text" class="login-field" formControlName="username"
+            [ngClass]="{ 'is-invalid': submitted && f.username.errors }" placeholder="username" id="login-name">
+          <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+            <div *ngIf="f.username.errors.required">Username is required</div>
+          </div>
+          <label class="login-field-icon fui-user" for="login-name"></label>
+        </div>
+
+        <div class="control-group form-group">
+          <input type="password" class="login-field" formControlName="pwd"
+            [ngClass]="{ 'is-invalid': submitted && f.pwd.errors }" placeholder="password" id="login-pass">
+          <div *ngIf="submitted && f.pwd.errors" class="invalid-feedback">
+            <div *ngIf="f.pwd.errors.required">Password is required</div>
+          </div>
+          <label class="login-field-icon fui-lock" for="login-pass"></label>
+        </div>
+
+        <a class="btn btn-primary btn-large btn-block" (click)="login()">login</a>
+        <a class="login-link" [routerLink]="['/register']" href="#">Not have a account?</a>
+      </div>
+    </form>
+  </div>
+</div>

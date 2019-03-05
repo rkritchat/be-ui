@@ -24,7 +24,7 @@ export class TaskService {
         user : task.user,
         taskDesc : task.taskDesc,
         taskProgress : task.taskProgress,
-        taskStatus : ""
+        taskStatus : "I"
       }
     )).toPromise();
   }
