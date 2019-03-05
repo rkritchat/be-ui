@@ -1,0 +1,12 @@
+{
+    "/be-api-ts/*": {
+      "target":  {
+        "host": "localhost:5000",
+        "protocol": "http:",
+        "port": 5000
+      },
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "info"
+   }
+}

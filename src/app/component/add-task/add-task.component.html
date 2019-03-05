@@ -5,15 +5,20 @@
 		<div class="col-md-4 col-md-offset-4 col-xs-6 col-xs-offset-3">
 			<div class="add-control">
 				<div class="form-group has-feedback">
-					<input type="text" class="form-control" placeholder="Title"/>
+					<input type="text" class="form-control" [(ngModel)]="task.taskLabel" placeholder="Title"/>
 					<!-- <i class="fa fa-plus form-control-feedback add-btn" title="Add item"></i> -->
         </div>
         <div class="form-group has-feedback">
-					<input type="text" class="form-control" placeholder="Description"/>
+					<input type="text" class="form-control" [(ngModel)]="task.taskDesc" placeholder="Description"/>
 					<!-- <i class="fa fa-plus form-control-feedback add-btn" title="Add item"></i> -->
 				</div>
+		<div class="form-group has-feedback">
+			<input type="text" class="form-control" [(ngModel)]="task.taskProgress" placeholder="Progress"/>
+			<!-- <i class="fa fa-plus form-control-feedback add-btn" title="Add item"></i> -->
+		</div>
       </div>
-      <button class="button" (click)="sentMail()">ADD</button>
+      <button class="button" (click)="addTask()">ADD</button>
 
 	</div>
 </div>
+<app-alert #dialog></app-alert>

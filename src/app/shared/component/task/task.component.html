@@ -10,7 +10,7 @@
     (cdkDropListDropped)="drop($event)">
     <div class="example-box"  style="text-align:center" *ngFor="let item of task" cdkDrag>
       <div>
-          {{item.desc}}
+          {{item.taskDesc}}
       </div>
       <!-- <div>
         <mat-slider min="1" max="100" step="25" [(ngModel)]="item.value" (input)="item.value = $event.value"></mat-slider>
@@ -31,11 +31,11 @@
     (cdkDropListDropped)="drop($event)">
     <div class="example-box" style="text-align:center" *ngFor="let item of yesterday" cdkDrag>
         <div>
-            {{item.desc}}
+            {{item.taskDesc}}
         </div>
         <div >
          
-          <input type="text" style="margin-top:10px;text-align:center" (keypress)="onTyping($event)"  class="form-control" [(ngModel)]="item.value" placeholder="Progress"/>
+          <input type="text" style="margin-top:10px;text-align:center" (keypress)="onTyping($event)"  class="form-control" [(ngModel)]="item.taskProgress" placeholder="Progress"/>
           <!-- <mat-slider min="1" max="100" step="25" [(ngModel)]="item.value" (input)="item.value = $event.value"></mat-slider> -->
         </div>
     </div>
@@ -54,10 +54,10 @@
     (cdkDropListDropped)="drop($event)">
     <div class="example-box" style="text-align:center" *ngFor="let item of today" cdkDrag>
         <div>
-            {{item.desc}}
+            {{item.taskDesc}}
         </div>
         <div>
-            <input type="text" style="margin-top:10px;text-align:center" class="form-control" [(ngModel)]="item.value" placeholder="Progress"/>
+            <input type="text" style="margin-top:10px;text-align:center" class="form-control" [(ngModel)]="item.taskProgress" placeholder="Progress"/>
             <!-- <mat-slider min="1" max="100" step="25" [(ngModel)]="item.value" (input)="item.value = $event.value"></mat-slider> -->
         </div>
     </div>
@@ -75,11 +75,11 @@
     (cdkDropListDropped)="drop($event)">
     <div class="example-box" style="text-align:center" *ngFor="let item of tomorrow" cdkDrag>
         <div>
-            {{item.desc}}
+            {{item.taskDesc}}
         </div>
         <div>
-            <input type="text" style="margin-top:10px;text-align:center"  class="form-control" [(ngModel)]="item.value" placeholder="Progress"/>
-            <!-- <mat-slider min="1" max="100" step="25" [(ngModel)]="item.value" (input)="item.value = $event.value"></mat-slider> -->
+            <input type="text" style="margin-top:10px;text-align:center"  class="form-control" [(ngModel)]="item.taskProgress" placeholder="Progress"/>
+            <!-- <mat-slider min="1" max="100" step="25" [(ngModel)]="item.taskProgress" (input)="item.value = $event.value"></mat-slider> -->
           </div>
     </div>
   </div>

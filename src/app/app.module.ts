@@ -17,6 +17,9 @@ import { AddTaskComponent } from './component/add-task/add-task.component';
 import { Global } from './shared/class/global';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
+import { AlertComponent, DialogContentExampleDialog } from './shared/component/alert/alert.component';
+import { MatButtonModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -26,6 +29,8 @@ import { FormsModule } from '@angular/forms';
     ProgressbarComponent,
     ResultComponent,
     AddTaskComponent,
+    AlertComponent,
+    DialogContentExampleDialog
   ],
   imports: [
     BrowserModule,
@@ -36,8 +41,11 @@ import { FormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     DragDropModule,
     MatSliderModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatDialogModule,
+    MatButtonModule
   ],
+  entryComponents:[DialogContentExampleDialog],
   providers: [SendemailService,Global],
   bootstrap: [AppComponent],
   schemas:[NO_ERRORS_SCHEMA]

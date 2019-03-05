@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import { Global } from '../../class/global';
+import { TaskService } from 'src/app/service/task.service';
 
 
 @Component({
@@ -10,16 +11,28 @@ import { Global } from '../../class/global';
 })
 export class TaskComponent implements OnInit {
 
-  constructor(private global:Global) { }
+  constructor(private global:Global,private taskService:TaskService) { }
   val: any
   ngOnInit() {
 
   }
   task = [
-    { 'desc':'Get to work','value':"25",id:1},
-    { 'desc':'Pick up groceries','value':"25",id:2},
-    { 'desc':'Go home','value':"25",id:3},
-    { 'desc':'Fall asleep','value':"25",id:4}
+    { taskDesc:'Get to work',
+      taskProgress:"25",
+      taskId:1
+    },
+    { taskDesc:'Pick up groceries',
+      taskProgress:"25",
+      taskId:2
+    },
+    { taskDesc:'Go home',
+      taskProgress:"25",
+      taskId:3
+    },
+    { taskDesc:'Fall asleep',
+      taskProgress:"25",
+      taskId:4
+    }
   ];
 
   yesterday = [
@@ -49,5 +62,25 @@ export class TaskComponent implements OnInit {
 
   onTyping(evnt){
     console.log(this.yesterday)
+  }
+
+  getTaskList() {
+    this.taskService.getTaskListByUser("kritchat")
+      .then((result: any) => {
+        let data = result
+
+        if ("0000" == data.statusCode) {
+          this.task = data.taskRes
+        }
+        else{
+          this.task = []
+        }
+
+      })
+      .catch(err => {
+        this.task = []
+        throw err
+      });
+     
   }
 }
