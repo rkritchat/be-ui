@@ -9,7 +9,7 @@ export class TaskService {
   constructor(private http:HttpClient) { }
 
   getTaskListByUser(user) {
-    return this.http.post('https://us-central1-be-api-3f648.cloudfunctions.net/task/find', JSON.stringify(
+    return this.http.post('/task/find', JSON.stringify(
       {
         user:user
       }
@@ -17,7 +17,7 @@ export class TaskService {
   }
 
   addTask(task) {
-    return this.http.put('https://us-central1-be-api-3f648.cloudfunctions.net/task/add', JSON.stringify(
+    return this.http.put('/task/add', JSON.stringify(
       {
         taskId : "",
         taskLabel : task.taskLabel,

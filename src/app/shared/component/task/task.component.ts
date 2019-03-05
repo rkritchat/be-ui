@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import { Global } from '../../class/global';
-import { TaskService } from 'src/app/service/task.service';
+import { TaskService } from 'src/app/service/taskService/task.service';
 
 
 @Component({

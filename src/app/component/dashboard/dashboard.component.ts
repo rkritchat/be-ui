@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { SendemailService } from 'src/app/service/sendemail.service';
+import { SendemailService } from 'src/app/service/sendmailService/sendemail.service';
 
 @Component({
   selector: 'app-dashboard',

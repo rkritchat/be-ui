@@ -3,7 +3,7 @@ import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TaskComponent } from './shared/component/task/task.component'
@@ -12,7 +12,7 @@ import { ProgressbarComponent } from './shared/component/progressbar/progressbar
 import { MatSliderModule } from '@angular/material/slider';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { ResultComponent } from './shared/component/result/result.component';
-import { SendemailService } from './service/sendemail.service';
+import { SendemailService } from './service/sendmailService/sendemail.service';
 import { AddTaskComponent } from './component/add-task/add-task.component';
 import { Global } from './shared/class/global';
 import { CommonModule } from '@angular/common';
@@ -20,6 +20,7 @@ import { FormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AlertComponent, DialogContentExampleDialog } from './shared/component/alert/alert.component';
 import { MatButtonModule } from '@angular/material';
+import { Intorceptor } from './intorceptor/intorceptor';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,9 @@ import { MatButtonModule } from '@angular/material';
     MatButtonModule
   ],
   entryComponents:[DialogContentExampleDialog],
-  providers: [SendemailService,Global],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: Intorceptor, multi: true },
+    SendemailService,Global],
   bootstrap: [AppComponent],
   schemas:[NO_ERRORS_SCHEMA]
 })

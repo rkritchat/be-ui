@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { TaskService } from 'src/app/service/task.service';
+import { TaskService } from 'src/app/service/taskService/task.service';
 
 @Component({
   selector: 'app-add-task',
