@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SendemailService } from 'src/app/service/sendmailService/sendemail.service';
 import { Global } from 'src/app/shared/class/global';
@@ -9,7 +9,7 @@ import { Global } from 'src/app/shared/class/global';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-
+  @ViewChild('msgResult') msgResult;
   result:String = ''
   constructor(private sendmailService: SendemailService,private global:Global){
 
@@ -20,20 +20,23 @@ export class DashboardComponent implements OnInit {
   }
 
   sentMail() {
+    this.global.spinnerShow()
     this.sendmailService.sendemail(this.global.getSendMailparam())
       .then((result: any) => {
         let data = result
 
         if ("0000" == data.statusCode) {
-          this.result = data.statusDesc
+          this.global.spinnerHide()
+          this.msgResult.openDialog(data)
         }
         else{
-          this.result = ''
+          this.global.spinnerHide()
+          this.msgResult.openDialog(data)
         }
 
       })
       .catch(err => {
-        this.result = 'Failed'
+        this.global.spinnerHide()
         throw err
       });
      

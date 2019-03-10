@@ -17,6 +17,30 @@ export class UserService {
         pwd:  userInfo.pwd,
         tell:  userInfo.tel,
         email:  userInfo.email,
+        nickName:userInfo.nickname
+      }
+    )).toPromise();
+  }
+
+  login(usr,pwd) {
+    return this.http.post('/user/login', JSON.stringify(
+      {
+        user:  usr,
+        pwd:  pwd,
+      }
+    )).toPromise();
+  }
+
+  setting(user) {
+    return this.http.patch('/user/init', JSON.stringify(
+      {
+        firstname:user.firstname,
+        lastname:user.lastname,
+        user:user.user,
+        pwd:user.pwd,
+        email:user.email,
+        tell:user.tell,
+        nickName:user.nickName
       }
     )).toPromise();
   }

@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { TaskService } from 'src/app/service/taskService/task.service';
+import { Global } from 'src/app/shared/class/global';
 
 @Component({
   selector: 'app-add-task',
@@ -9,7 +10,7 @@ import { TaskService } from 'src/app/service/taskService/task.service';
 export class AddTaskComponent implements OnInit {
   @ViewChild('dialog') dialog;
 
-  constructor(private taskService: TaskService) { }
+  constructor(private taskService: TaskService,private global:Global) { }
   task = {
     taskLabel: "",
     user: "tichaws",
@@ -21,19 +22,22 @@ export class AddTaskComponent implements OnInit {
   }
 
   addTask() {
+    this.global.spinnerShow()
     this.taskService.addTask(this.task)
       .then((result: any) => {
         let data = result
         if ("0000" == data.statusCode) {
           this.clear()
+          this.global.spinnerHide()
           this.dialog.openDialog(data)
         }
         else {
-
+          this.global.spinnerHide()
         }
 
       })
       .catch(err => {
+        this.global.spinnerHide()
         throw err
       });
 

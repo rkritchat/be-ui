@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import { Global } from '../../class/global';
 import { TaskService } from 'src/app/service/taskService/task.service';
@@ -72,6 +72,7 @@ export class TaskComponent implements OnInit {
   }
 
   getTaskList() {
+    this.global.spinnerShow()
     this.taskService.getTaskListByUser(localStorage.getItem('username'))
       .then((result: any) => {
         let data = result
@@ -82,10 +83,11 @@ export class TaskComponent implements OnInit {
         else{
           this.task = []
         }
-
+        this.global.spinnerHide()
       })
       .catch(err => {
         this.task = []
+        this.global.spinnerHide()
         throw err
       });
      

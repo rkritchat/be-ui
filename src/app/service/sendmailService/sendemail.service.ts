@@ -20,7 +20,7 @@ export class SendemailService {
   }
 
   settingEmail(setting){
-    return this.http.post('/email/init', JSON.stringify(
+    return this.http.patch('/email/init', JSON.stringify(
       {
         user:  localStorage.getItem('username'),
         emailModel:{

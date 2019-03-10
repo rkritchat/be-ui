@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http' 
 import { Router } from '@angular/router';
 
@@ -7,10 +7,14 @@ import { Router } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   constructor(private router:Router){
 
   }
-  
+
+  ngOnInit(): void {
+    localStorage.clear()
+  }
+
 }

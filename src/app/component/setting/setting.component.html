@@ -1,11 +1,11 @@
 <div class="container">
-  <h1 class="text-center">Setting</h1>
+  <h1 class="text-center">Email Setting</h1>
   <div class="separator"></div>
   <div class="row">
-    <div class="col-md-4 col-md-offset-4 col-xs-6 col-xs-offset-3">
+    <div class="col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1">
       <div class="add-control">
         <div class="form-group has-feedback">
-					<input type="text" class="form-control" [(ngModel)]="setting.email" placeholder="email" disabled />
+					<input type="text" class="form-control" [(ngModel)]="setting.email" placeholder="email"  [disabled]="!edit"/>
 					<!-- <i class="fa fa-plus form-control-feedback add-btn" title="Add item"></i> -->
 				</div>
 				<div class="form-group has-feedback">
@@ -13,11 +13,11 @@
 					<!-- <i class="fa fa-plus form-control-feedback add-btn" title="Add item"></i> -->
 				</div>
 				<div class="form-group has-feedback">
-					<input type="text" class="form-control" [(ngModel)]="setting.sendTo" placeholder="sendTo" [disabled]="!edit"/>
+					<input type="text" class="form-control" [(ngModel)]="sendTo" placeholder="sendTo" [disabled]="!edit"/>
 					<!-- <i class="fa fa-plus form-control-feedback add-btn" title="Add item"></i> -->
         </div>
         <div class="form-group has-feedback">
-					<input type="text" class="form-control" [(ngModel)]="setting.sendCC" placeholder="sendCC" [disabled]="!edit"/>
+					<input type="text" class="form-control" [(ngModel)]="sendCC" placeholder="sendCC" [disabled]="!edit"/>
 					<!-- <i class="fa fa-plus form-control-feedback add-btn" title="Add item"></i> -->
 				</div>
       </div>

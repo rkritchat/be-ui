@@ -25,6 +25,9 @@ import { LoginComponent } from './component/login/login.component';
 import { RegisterComponent } from './component/register/register.component';
 import { HeaderComponent } from './component/header/header.component';
 import { SettingComponent } from './component/setting/setting.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { UserSettingComponent } from './component/user-setting/user-setting.component';
+
 
 @NgModule({
   declarations: [
@@ -39,7 +42,8 @@ import { SettingComponent } from './component/setting/setting.component';
     LoginComponent,
     RegisterComponent,
     HeaderComponent,
-    SettingComponent
+    SettingComponent,
+    UserSettingComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +57,8 @@ import { SettingComponent } from './component/setting/setting.component';
     MatExpansionModule,
     MatDialogModule,
     MatButtonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxSpinnerModule
   ],
   entryComponents:[DialogContentExampleDialog],
   providers: [

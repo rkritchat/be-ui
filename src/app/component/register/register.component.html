@@ -6,13 +6,18 @@
 
     <div class="register-form">
       <div class="control-group">
-        <input type="text" class="register-field" [(ngModel)]="regisForm.firstname" value="" placeholder="firstname" id="register-name">
+        <input type="text" class="register-field" [(ngModel)]="regisForm.firstname" value="" placeholder="First Name" id="register-name">
         <label class="register-field-icon fui-user" for="register-firstname"></label>
       </div>
 
       <div class="control-group">
-        <input type="text" class="register-field"  [(ngModel)]="regisForm.lastname" value="" placeholder="lastname" id="register-lastname">
+        <input type="text" class="register-field"  [(ngModel)]="regisForm.lastname" value="" placeholder="Last Name" id="register-lastname">
         <label class="register-field-icon fui-lock" for="register-lastname"></label>
+      </div>
+
+      <div class="control-group">
+        <input type="text" class="register-field"  [(ngModel)]="regisForm.nickname" value="" placeholder="Nickname" id="register-lastname">
+        <label class="register-field-icon fui-lock" for="register-nickname"></label>
       </div>
 
       <div class="control-group">

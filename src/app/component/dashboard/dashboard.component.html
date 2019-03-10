@@ -9,10 +9,7 @@
         <div class="col-md-3" style="margin-top: 1rem;">
                 <button class="button" (click)="sentMail()">Send mail</button>
         </div>
-        <div class="col-md-12">
-                <app-result *ngIf="result!=''" result='{{result}}' ></app-result>
-        </div>
-        
     </div>
     
 </div>
+<app-alert #msgResult></app-alert>

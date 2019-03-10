@@ -6,13 +6,15 @@ import { LoginComponent } from './component/login/login.component';
 import { RegisterComponent } from './component/register/register.component';
 import { SettingComponent } from './component/setting/setting.component';
 import { AuthenGuard } from './guards/authen.guard';
+import { UserSettingComponent } from './component/user-setting/user-setting.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'dashboard', component: DashboardComponent,canActivate: [AuthenGuard],runGuardsAndResolvers: 'always'},
   { path: 'add-task', component: AddTaskComponent ,canActivate: [AuthenGuard],runGuardsAndResolvers: 'always'},
-  { path: 'setting', component: SettingComponent ,canActivate: [AuthenGuard],runGuardsAndResolvers: 'always'}
+  { path: 'email-setting', component: SettingComponent ,canActivate: [AuthenGuard],runGuardsAndResolvers: 'always'},
+  { path: 'user-setting', component:UserSettingComponent ,canActivate: [AuthenGuard],runGuardsAndResolvers: 'always'}
 ];
 
 @NgModule({

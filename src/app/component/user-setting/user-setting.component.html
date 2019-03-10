@@ -1,0 +1,40 @@
+<div class="container">
+  <h1 class="text-center">User Setting</h1>
+  <div class="separator"></div>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1">
+      <div class="add-control">
+        <div class="form-group has-feedback">
+          <input type="text" class="form-control" [(ngModel)]="setting.user" placeholder="user" disabled />
+          <!-- <i class="fa fa-plus form-control-feedback add-btn" title="Add item"></i> -->
+        </div>
+        <div class="form-group has-feedback">
+          <input type="text" class="form-control" [(ngModel)]="setting.firstname" placeholder="firstname"
+            [disabled]="!edit" />
+          <!-- <i class="fa fa-plus form-control-feedback add-btn" title="Add item"></i> -->
+        </div>
+        <div class="form-group has-feedback">
+          <input type="text" class="form-control" [(ngModel)]="setting.lastname" placeholder="lastname"
+            [disabled]="!edit" />
+          <!-- <i class="fa fa-plus form-control-feedback add-btn" title="Add item"></i> -->
+        </div>
+        <div class="form-group has-feedback">
+          <input type="text" class="form-control" [(ngModel)]="setting.nickName" placeholder="nickName"
+            [disabled]="!edit" />
+          <!-- <i class="fa fa-plus form-control-feedback add-btn" title="Add item"></i> -->
+        </div>
+        <div class="form-group has-feedback">
+          <input type="text" class="form-control" [(ngModel)]="setting.pwd" placeholder="password" [disabled]="!edit" />
+          <!-- <i class="fa fa-plus form-control-feedback add-btn" title="Add item"></i> -->
+        </div>
+        <div class="form-group has-feedback">
+          <input type="text" class="form-control" [(ngModel)]="setting.tell" placeholder="mobile" [disabled]="!edit" />
+          <!-- <i class="fa fa-plus form-control-feedback add-btn" title="Add item"></i> -->
+        </div>
+      </div>
+      <button *ngIf="!edit" class="button" (click)="clickEdit()">Edit</button>
+      <button *ngIf="edit" class="button" (click)="save()">Save</button>
+
+    </div>
+  </div>
+  <app-alert #dialog></app-alert>
