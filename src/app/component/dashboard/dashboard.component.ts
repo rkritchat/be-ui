@@ -10,6 +10,7 @@ import { Global } from 'src/app/shared/class/global';
 })
 export class DashboardComponent implements OnInit {
   @ViewChild('msgResult') msgResult;
+  @ViewChild('task') task;
   result:String = ''
   constructor(private sendmailService: SendemailService,private global:Global){
 
@@ -27,6 +28,7 @@ export class DashboardComponent implements OnInit {
 
         if ("0000" == data.statusCode) {
           this.global.spinnerHide()
+          this.refresh()
           this.msgResult.openDialog(data)
         }
         else{
@@ -40,5 +42,9 @@ export class DashboardComponent implements OnInit {
         throw err
       });
      
+  }
+
+  refresh(){
+    this.task.initVal()
   }
 }

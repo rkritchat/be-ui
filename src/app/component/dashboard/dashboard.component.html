@@ -2,12 +2,15 @@
     <h1 class="text-center">TASK</h1>
     <div class="separator"></div>
     <div class="row col-md-10 col-md-offset-1">
-        <app-task style="width:100%"></app-task>
+        <app-task style="width:100%" #task></app-task>
        
     </div>
     <div class="row col-md-10 col-md-offset-1">
         <div class="col-md-3" style="margin-top: 1rem;">
                 <button class="button" (click)="sentMail()">Send mail</button>
+        </div>
+        <div class="col-md-3" style="margin-top: 1rem;">
+                <button class="button" (click)="refresh()">Refresh</button>
         </div>
     </div>
     

@@ -9,6 +9,9 @@ export class SendemailService {
   constructor(private http:HttpClient) { }
 
   sendemail(value){
+    value.nextDay.forEach(element => {
+      element.taskProgress = 0
+    });
     return this.http.post('/email/send', JSON.stringify(
       {
         user:  localStorage.getItem('username'),

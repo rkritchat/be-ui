@@ -5,25 +5,30 @@
     <div class="col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1">
       <div class="add-control">
         <div class="form-group has-feedback">
+            <label>Email</label>
 					<input type="text" class="form-control" [(ngModel)]="setting.email" placeholder="email"  [disabled]="!edit"/>
 					<!-- <i class="fa fa-plus form-control-feedback add-btn" title="Add item"></i> -->
 				</div>
 				<div class="form-group has-feedback">
-					<input type="text" class="form-control" [(ngModel)]="setting.password" placeholder="password" [disabled]="!edit"/>
+            <label>Password</label>
+					<input type="password" class="form-control" [(ngModel)]="setting.password" placeholder="password" [disabled]="!edit"/>
 					<!-- <i class="fa fa-plus form-control-feedback add-btn" title="Add item"></i> -->
 				</div>
 				<div class="form-group has-feedback">
+            <label>Send To</label>
 					<input type="text" class="form-control" [(ngModel)]="sendTo" placeholder="sendTo" [disabled]="!edit"/>
 					<!-- <i class="fa fa-plus form-control-feedback add-btn" title="Add item"></i> -->
         </div>
         <div class="form-group has-feedback">
+            <label>Send CC</label>
 					<input type="text" class="form-control" [(ngModel)]="sendCC" placeholder="sendCC" [disabled]="!edit"/>
 					<!-- <i class="fa fa-plus form-control-feedback add-btn" title="Add item"></i> -->
 				</div>
       </div>
       <button *ngIf="!edit" class="button" (click)="clickEdit()">Edit</button>
       <button *ngIf="edit" class="button" (click)="save()">Save</button>
+      <button *ngIf="edit" class="button" (click)="cancle()">Cancle</button>
 
     </div>
   </div>
-  <app-alert #dialog></app-alert>
+  <app-alert #emailSettingDialog></app-alert>

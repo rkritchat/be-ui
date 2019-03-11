@@ -5,36 +5,43 @@
     <div class="col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1">
       <div class="add-control">
         <div class="form-group has-feedback">
+          <label>Username</label>
           <input type="text" class="form-control" [(ngModel)]="setting.user" placeholder="user" disabled />
           <!-- <i class="fa fa-plus form-control-feedback add-btn" title="Add item"></i> -->
         </div>
         <div class="form-group has-feedback">
+          <label>First Name</label>
           <input type="text" class="form-control" [(ngModel)]="setting.firstname" placeholder="firstname"
             [disabled]="!edit" />
           <!-- <i class="fa fa-plus form-control-feedback add-btn" title="Add item"></i> -->
         </div>
         <div class="form-group has-feedback">
+          <label>Last Name</label>
           <input type="text" class="form-control" [(ngModel)]="setting.lastname" placeholder="lastname"
             [disabled]="!edit" />
           <!-- <i class="fa fa-plus form-control-feedback add-btn" title="Add item"></i> -->
         </div>
         <div class="form-group has-feedback">
+          <label>Nickname</label>
           <input type="text" class="form-control" [(ngModel)]="setting.nickName" placeholder="nickName"
             [disabled]="!edit" />
           <!-- <i class="fa fa-plus form-control-feedback add-btn" title="Add item"></i> -->
         </div>
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" [(ngModel)]="setting.pwd" placeholder="password" [disabled]="!edit" />
+          <label>Password</label>
+          <input type="password" class="form-control" [(ngModel)]="setting.pwd" placeholder="password" [disabled]="!edit" />
           <!-- <i class="fa fa-plus form-control-feedback add-btn" title="Add item"></i> -->
         </div>
         <div class="form-group has-feedback">
+          <label>Mobile</label>
           <input type="text" class="form-control" [(ngModel)]="setting.tell" placeholder="mobile" [disabled]="!edit" />
           <!-- <i class="fa fa-plus form-control-feedback add-btn" title="Add item"></i> -->
         </div>
       </div>
       <button *ngIf="!edit" class="button" (click)="clickEdit()">Edit</button>
       <button *ngIf="edit" class="button" (click)="save()">Save</button>
+      <button *ngIf="edit" class="button" (click)="cancle()">Cancle</button>
 
     </div>
   </div>
-  <app-alert #dialog></app-alert>
+  <app-alert #userSettingDialog></app-alert>

@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   @ViewChild('loginAlert') loginAlert;
   constructor(private route:Router,private global:Global,
     private formBuilder: FormBuilder,private userService:UserService) { }
+
   username
   pwd
   loginForm = new FormGroup({
@@ -64,6 +65,12 @@ export class LoginComponent implements OnInit {
         throw err
       });
      
+  }
+
+  onKeydown(event) {
+    if (event.key === "Enter") {
+      this.login()
+    }
   }
 
 }

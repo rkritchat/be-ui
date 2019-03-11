@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Global } from 'src/app/shared/class/global';
 import { SendemailService } from 'src/app/service/sendmailService/sendemail.service';
 import Validate from 'src/app/shared/class/validate';
@@ -10,7 +10,8 @@ import { UserService } from 'src/app/service/userService/user.service';
   styleUrls: ['./user-setting.component.scss']
 })
 export class UserSettingComponent implements OnInit {
-
+  tempSetting: any;
+  @ViewChild('userSettingDialog') userSettingDialog
   constructor(private global:Global,private userService:UserService) { }
   edit = false
   setting ={
@@ -32,11 +33,22 @@ export class UserSettingComponent implements OnInit {
 
   clickEdit(){
     this.edit = true;
+    this.tempSetting = this.saveTemp(this.setting)
   }
 
   save(){
     this.edit = false
     this.saveSetting()
+  }
+
+  saveTemp(val){
+    let temp = Object.assign({}, val)
+    return temp
+  }
+
+  cancle(){
+    this.setting = this.saveTemp(this.tempSetting)
+    this.edit = false
   }
 
   saveSetting(){
@@ -47,9 +59,11 @@ export class UserSettingComponent implements OnInit {
 
         if ("0000" == data.statusCode) {
           this.global.spinnerHide()
+          this.userSettingDialog.openDialog(data)
         }
         else{
           this.global.spinnerHide()
+          this.userSettingDialog.openDialog(data)
         }
 
       })

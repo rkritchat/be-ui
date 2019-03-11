@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Global } from 'src/app/shared/class/global';
 import Validate from 'src/app/shared/class/validate';
 import { SendemailService } from 'src/app/service/sendmailService/sendemail.service';
@@ -9,7 +9,7 @@ import { SendemailService } from 'src/app/service/sendmailService/sendemail.serv
   styleUrls: ['./setting.component.scss']
 })
 export class SettingComponent implements OnInit {
-
+  @ViewChild('emailSettingDialog') emailSettingDialog
   constructor(private global:Global,private emailService:SendemailService) { }
   edit = false
   setting ={
@@ -18,6 +18,7 @@ export class SettingComponent implements OnInit {
     password: "",
     to: ["rkritchat@gmail.com"]
   }
+  tempSetting = {}
   sendCC;
   sendTo;
 
@@ -29,12 +30,22 @@ export class SettingComponent implements OnInit {
 
   clickEdit(){
     this.edit = true;
+    this.tempSetting = this.saveTemp(this.setting)
   }
 
   save(){
     this.edit = false
     this.validateEmail()
+  }
 
+  saveTemp(val){
+    let temp = Object.assign({}, val)
+    return temp
+  }
+
+  cancle(){
+    this.setting = this.saveTemp(this.tempSetting)
+    this.edit = false
   }
 
   validateEmail(){
@@ -58,9 +69,11 @@ export class SettingComponent implements OnInit {
 
         if ("0000" == data.statusCode) {
           this.global.spinnerHide()
+          this.emailSettingDialog.openDialog(data)
         }
         else{
           this.global.spinnerHide()
+          this.emailSettingDialog.openDialog(data)
         }
 
       })
