@@ -30,6 +30,9 @@
     class="example-list"
     (cdkDropListDropped)="drop($event)">
     <div class="example-box" style="text-align:center" *ngFor="let item of yesterday" cdkDrag>
+        <div style="text-align:right" (click)="copyTask(item)">  
+          <img src="./assets/icon/copy.png" class="" alt="image" style="width:18px;" />
+        </div>
         <div>
             {{item.taskDesc}}
         </div>
@@ -53,6 +56,9 @@
     class="example-list"
     (cdkDropListDropped)="drop($event)">
     <div class="example-box" style="text-align:center" *ngFor="let item of today" cdkDrag>
+      <div style="text-align:right" (click)="copyTask(item)">  
+        <img src="./assets/icon/copy.png" class="" alt="image" style="width:18px;" />
+      </div>
         <div>
             {{item.taskDesc}}
         </div>
@@ -74,6 +80,9 @@
     class="example-list"
     (cdkDropListDropped)="drop($event)">
     <div class="example-box" style="text-align:center" *ngFor="let item of tomorrow" cdkDrag>
+        <div style="text-align:right" (click)="copyTask(item)">  
+          <img src="./assets/icon/copy.png" class="" alt="image" style="width:18px;" />
+        </div>
         <div>
             {{item.taskDesc}}
         </div>

@@ -44,6 +44,22 @@ export class TaskComponent implements OnInit {
     this.global.setData(this.yesterday)
   }
 
+  copyTask(task){
+    let newTask = Object.assign({},task)
+    newTask.taskProgress= 0
+    newTask.taskId = null
+    this.task.push(newTask)
+  }
+
+  saveTask(){
+    let param ={
+      today:this.today,
+      lastDay:this.yesterday,
+      nextDay:this.tomorrow
+    }
+    this.global.setSendMailparam(param)
+  }
+
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
@@ -53,12 +69,7 @@ export class TaskComponent implements OnInit {
                         event.previousIndex,
                         event.currentIndex);
     }
-    let param ={
-      today:this.today,
-      lastDay:this.yesterday,
-      nextDay:this.tomorrow
-    }
-    this.global.setSendMailparam(param)
+   this.saveTask()
   }
 
   onTyping(evnt){

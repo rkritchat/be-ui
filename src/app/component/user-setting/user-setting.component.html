@@ -11,30 +11,35 @@
         </div>
         <div class="form-group has-feedback">
           <label>First Name</label>
-          <input type="text" class="form-control" [(ngModel)]="setting.firstname" placeholder="firstname"
+          <input type="text" class="form-control" [(ngModel)]="setting.firstname" (keypress)="onTypingFirstName()" placeholder="firstname"
             [disabled]="!edit" />
+          <span class="red" *ngIf="error.firstname.status">{{error.firstname.msg}}</span>
           <!-- <i class="fa fa-plus form-control-feedback add-btn" title="Add item"></i> -->
         </div>
         <div class="form-group has-feedback">
           <label>Last Name</label>
-          <input type="text" class="form-control" [(ngModel)]="setting.lastname" placeholder="lastname"
+          <input type="text" class="form-control" [(ngModel)]="setting.lastname" (keypress)="onTypingLastName()" placeholder="lastname"
             [disabled]="!edit" />
+          <span class="red" *ngIf="error.lastname.status">{{error.lastname.msg}}</span>
           <!-- <i class="fa fa-plus form-control-feedback add-btn" title="Add item"></i> -->
         </div>
         <div class="form-group has-feedback">
           <label>Nickname</label>
-          <input type="text" class="form-control" [(ngModel)]="setting.nickName" placeholder="nickName"
+          <input type="text" class="form-control" [(ngModel)]="setting.nickName" (keypress)="onTypingNickname()" placeholder="nickName"
             [disabled]="!edit" />
+          <span class="red" *ngIf="error.nickName.status">{{error.nickName.msg}}</span>
           <!-- <i class="fa fa-plus form-control-feedback add-btn" title="Add item"></i> -->
         </div>
         <div class="form-group has-feedback">
           <label>Password</label>
-          <input type="password" class="form-control" [(ngModel)]="setting.pwd" placeholder="password" [disabled]="!edit" />
+          <input type="password" class="form-control" [(ngModel)]="setting.pwd"  (keypress)="onTypingPassword()" placeholder="password" [disabled]="!edit" />
+          <span class="red" *ngIf="error.password.status">{{error.password.msg}}</span>
           <!-- <i class="fa fa-plus form-control-feedback add-btn" title="Add item"></i> -->
         </div>
         <div class="form-group has-feedback">
           <label>Mobile</label>
-          <input type="text" class="form-control" [(ngModel)]="setting.tell" placeholder="mobile" [disabled]="!edit" />
+          <input type="text" class="form-control" [(ngModel)]="setting.tell"  (keypress)="onTypinTell()" placeholder="mobile" [disabled]="!edit" />
+          <span class="red" *ngIf="error.tell.status">{{error.tell.msg}}</span>
           <!-- <i class="fa fa-plus form-control-feedback add-btn" title="Add item"></i> -->
         </div>
       </div>

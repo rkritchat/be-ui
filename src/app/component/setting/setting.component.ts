@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Global } from 'src/app/shared/class/global';
 import Validate from 'src/app/shared/class/validate';
 import { SendemailService } from 'src/app/service/sendmailService/sendemail.service';
+import { Validators, FormGroup, FormControl } from '@angular/forms';
+import { identifierModuleUrl } from '@angular/compiler';
 
 @Component({
   selector: 'app-setting',
@@ -21,7 +23,36 @@ export class SettingComponent implements OnInit {
   tempSetting = {}
   sendCC;
   sendTo;
-
+  msgError = {
+    enterInput:'กรุณาระบุข้อมูล',
+    emailInvalid:'อีเมล์ไม่ถูกต้อง'
+  }
+  error = {
+    email:{
+      msg:'กรุณาระบุข้อมูล',
+      status:false
+    },
+    sendTo:{
+      msg:'กรุณาระบุข้อมูล',
+      status:false
+    },
+    sendCC:{
+      msg:'กรุณาระบุข้อมูล',
+      status:false
+    },
+    settingEmailTypeTo:{
+      msg:'อีเมล์ไม่ถูกต้อง',
+      status:false
+    },
+    settingEmailTypeCC:{
+      msg:'อีเมล์ไม่ถูกต้อง',
+      status:false
+    },
+    settingPassword:{
+      msg:'กรุณาระบุข้อมูล',
+      status:false
+    }
+  }
   ngOnInit() {
     this.edit = false
     this.setting = this.global.getEmailInfo()
@@ -30,11 +61,10 @@ export class SettingComponent implements OnInit {
 
   clickEdit(){
     this.edit = true;
-    this.tempSetting = this.saveTemp(this.setting)
+    this.tempSetting = Object.assign({},this.setting)
   }
 
   save(){
-    this.edit = false
     this.validateEmail()
   }
 
@@ -43,22 +73,89 @@ export class SettingComponent implements OnInit {
     return temp
   }
 
+  validateInput(){
+    let valid = false
+    if(this.sendTo == ''){
+      this.error.sendTo.status = true
+      this.error.sendTo.msg = this.msgError.enterInput
+      valid = true
+    }else{
+      let to = Validate.splitEmail(this.sendTo)
+      to.forEach(element => {
+        if(!Validate.verifyEmail(element)){
+          this.error.sendTo.msg = this.msgError.emailInvalid
+          this.error.sendTo.status = true
+          valid = true
+        }
+      });
+    }
+    if(this.sendCC == ''){
+      this.error.sendCC.status = true
+      this.error.sendCC.msg = this.msgError.enterInput
+      valid = true
+    }
+    else{
+      let cc = Validate.splitEmail(this.sendCC)
+      cc.forEach(element => {
+        if(!Validate.verifyEmail(element)){
+          this.error.sendCC.msg = this.msgError.emailInvalid
+          this.error.sendCC.status = true
+          valid = true
+        }
+      });
+    }
+    if(this.setting.password == ''){
+      this.error.settingPassword.status = true
+      this.error.settingPassword.msg = this.msgError.enterInput
+      valid = true
+    }
+    if(this.setting.email == ''){
+      this.error.email.status = true
+      this.error.email.msg = this.msgError.enterInput
+      valid = true
+    }
+    return valid 
+  }
+
+  onTypingEmail(){
+    this.error.email.status = false
+  }
+
+  onTypingCC(){
+    this.error.sendCC.status = false
+  }
+
+
+  onTypingTo(){
+    this.error.sendTo.status = false
+  }
+
+  onTypingPassword(){
+    this.error.settingPassword.status = false
+  }
+
   cancle(){
     this.setting = this.saveTemp(this.tempSetting)
+    this.showEmail()
     this.edit = false
+    this.error.email.status = false
+    this.error.sendCC.status = false
+    this.error.sendTo.status = false
+    this.error.settingPassword.status = false
   }
 
   validateEmail(){
-    this.setting.cc = Validate.splitEmail(this.sendCC)
-    this.setting.to = Validate.splitEmail(this.sendTo)
-    this.saveSetting(this.setting)
+    if(!this.validateInput()){
+      this.edit = false
+      this.setting.cc = Validate.splitEmail(this.sendCC)
+      this.setting.to = Validate.splitEmail(this.sendTo)
+      this.saveSetting(this.setting)
+    }
   }
 
   showEmail(){
     this.sendCC  = Validate.showEmail(this.sendCC,this.setting.cc)
     this.sendTo  = Validate.showEmail(this.sendTo,this.setting.to)
-    console.log(this.sendTo)
-    console.log(this.sendCC)
   }
 
   saveSetting(setting){

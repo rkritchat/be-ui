@@ -21,6 +21,7 @@ export class DashboardComponent implements OnInit {
   }
 
   sentMail() {
+    this.task.saveTask()
     this.global.spinnerShow()
     this.sendmailService.sendemail(this.global.getSendMailparam())
       .then((result: any) => {

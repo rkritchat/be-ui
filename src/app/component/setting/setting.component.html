@@ -6,23 +6,26 @@
       <div class="add-control">
         <div class="form-group has-feedback">
             <label>Email</label>
-					<input type="text" class="form-control" [(ngModel)]="setting.email" placeholder="email"  [disabled]="!edit"/>
-					<!-- <i class="fa fa-plus form-control-feedback add-btn" title="Add item"></i> -->
+					<input type="text" class="form-control" [(ngModel)]="setting.email" (keypress)="onTypingEmail()" placeholder="email"  [disabled]="!edit"/>
+				  <span class="red" *ngIf="error.email.status">{{error.email.msg}}</span>
 				</div>
 				<div class="form-group has-feedback">
             <label>Password</label>
-					<input type="password" class="form-control" [(ngModel)]="setting.password" placeholder="password" [disabled]="!edit"/>
-					<!-- <i class="fa fa-plus form-control-feedback add-btn" title="Add item"></i> -->
+					<input type="password" class="form-control" [(ngModel)]="setting.password"  (keypress)="onTypingPassword()" placeholder="password" [disabled]="!edit"/>
+          <span class="red" *ngIf="error.settingPassword.status">{{error.settingPassword.msg}}</span>
+          <!-- <i class="fa fa-plus form-control-feedback add-btn" title="Add item"></i> -->
 				</div>
 				<div class="form-group has-feedback">
             <label>Send To</label>
-					<input type="text" class="form-control" [(ngModel)]="sendTo" placeholder="sendTo" [disabled]="!edit"/>
-					<!-- <i class="fa fa-plus form-control-feedback add-btn" title="Add item"></i> -->
+					<input type="text" class="form-control" [(ngModel)]="sendTo" placeholder="sendTo" (keypress)="onTypingTo()" [disabled]="!edit"/>
+          <span class="red" *ngIf="error.sendTo.status">{{error.sendTo.msg}}</span>
+          <!-- <i class="fa fa-plus form-control-feedback add-btn" title="Add item"></i> -->
         </div>
         <div class="form-group has-feedback">
             <label>Send CC</label>
-					<input type="text" class="form-control" [(ngModel)]="sendCC" placeholder="sendCC" [disabled]="!edit"/>
-					<!-- <i class="fa fa-plus form-control-feedback add-btn" title="Add item"></i> -->
+					<input type="text" class="form-control" [(ngModel)]="sendCC" placeholder="sendCC"  (keypress)="onTypingCC()" [disabled]="!edit"/>
+          <span class="red" *ngIf="error.sendCC.status">{{error.sendCC.msg}}</span>
+          <!-- <i class="fa fa-plus form-control-feedback add-btn" title="Add item"></i> -->
 				</div>
       </div>
       <button *ngIf="!edit" class="button" (click)="clickEdit()">Edit</button>
