@@ -56,7 +56,16 @@ export class SettingComponent implements OnInit {
   ngOnInit() {
     this.edit = false
     this.setting = this.global.getEmailInfo()
-    this.showEmail()
+    if(this.setting == null){
+      this.setting = {
+       cc :  [],
+       email : "",
+       password : "",
+       to :  []
+      }
+    }else{
+      this.showEmail()
+    }
   }
 
   clickEdit(){
